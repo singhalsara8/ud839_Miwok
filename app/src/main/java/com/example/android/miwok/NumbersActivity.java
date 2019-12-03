@@ -17,6 +17,12 @@ package com.example.android.miwok;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.ListView;
+
+import com.example.android.miwok.test.Word;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -24,5 +30,14 @@ public class NumbersActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers);
+        List<Word> words = new ArrayList<>();
+        words.add(new Word("one", "lutti"));
+
+        Word_adapter adapter=new Word_adapter(this, R.layout.list_item,R.id.miwok_text_view, words, this);
+        adapter.notifyDataSetChanged();
+
+        ListView listView = findViewById(R.id.list);
+
+        listView.setAdapter(adapter);
     }
 }
